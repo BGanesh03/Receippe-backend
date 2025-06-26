@@ -1,0 +1,38 @@
+# Build Output
+target/
+build/
+
+# Ignore Maven wrapper JAR
+.mvn/wrapper/maven-wrapper.jar
+
+# Ignore target folders inside source folders
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# Spring Boot secret config
+src/main/resources/application.properties
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
