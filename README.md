@@ -48,3 +48,11 @@ src/
 | POST   | `/api/profiles`      | Add a user profile     |
 | GET    | `/api/recipes`       | Get all recipes        |
 | POST   | `/api/recipes`       | Add a new recipe       |
+
+## 🔧 Setup Instructions
+
+1. Clone the repo  
+   ```bash
+   git clone https://github.com/your-username/Receippe-backend.git
+   cd Receippe-backend
+2. Import into Spring Tool Suite or IntelliJ
