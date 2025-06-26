@@ -4,6 +4,10 @@ This is a backend REST API built using **Spring Boot** to manage user profiles a
 It connects with a React frontend and supports full CRUD operations for both users and recipes.
 
 ---
+## 🚧 Project Status
+
+⚠️ This backend is **under development**.  
+More API features and error handling will be added soon.
 
 ## 🚀 Features
 
