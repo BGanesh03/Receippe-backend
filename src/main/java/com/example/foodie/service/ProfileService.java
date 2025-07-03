@@ -24,4 +24,9 @@ public class ProfileService {
     public List<Profile> getProfile(){
         return pro.findAll();
     }
+
+    public Profile login(String mail, String pw) {
+        return pro.findByMailAndPw(mail, pw)
+            .orElse(null);
+}
 }
