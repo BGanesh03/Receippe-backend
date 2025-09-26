@@ -24,7 +24,7 @@ public class ReceipeService {
 
 
     public Receipe getReceipesById(int recid) {
-        return repo.findById(recid).orElse(new Receipe(recid, null, null, null));
+        return repo.findById(recid).orElse(new Receipe(recid, null, null, null, null));
     }
 
     public void addReceipe(Receipe rec){
@@ -39,5 +39,9 @@ public class ReceipeService {
 
     public void delReceipeById(int recid) {
        repo.deleteById(recid);
+    }
+
+    public Receipe getReceipeByUserId(int pid){
+        return repo.findById(pid).orElse(new Receipe(pid, null, null, null, null));
     }
 }

@@ -4,7 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.foodie.model.Profile;
 import com.example.foodie.model.Receipe;
+import com.example.foodie.repository.ProfileRepo;
 import com.example.foodie.service.ReceipeService;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,6 +23,8 @@ public class ReceipeController {
 
     @Autowired
     ReceipeService service;
+    @Autowired
+    private ProfileRepo profileRepository;
 
     @GetMapping("/receipes")
     
@@ -32,10 +37,16 @@ public class ReceipeController {
         return service.getReceipesById(recid);
     }
 
-    @PostMapping("/receipes")
-    public void addReceipe(@RequestBody Receipe rec){
-        service.addReceipe(rec);
-    }
+    @PostMapping("/receipes/{pid}")
+public void addReceipe(@PathVariable int pid, @RequestBody Receipe rec) {
+    Profile profile = profileRepository.findById(pid)
+        .orElseThrow(() -> new RuntimeException("Profile not found"));
+
+    rec.setProfile(profile); // ✅ Link recipe to profile
+    service.addReceipe(rec);
+}
+
+
 
     @PutMapping("/receipes")
     public void updateReceipe(@RequestBody Receipe rec){

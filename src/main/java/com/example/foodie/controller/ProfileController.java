@@ -1,12 +1,12 @@
 package com.example.foodie.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-// import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -52,11 +52,26 @@ public ResponseEntity<?> login(@RequestBody Map<String, String> credentials) {
     Profile profile = service1.login(email, password);
 
     if (profile != null) {
-        return ResponseEntity.ok("Login successfully");
+        // Create a safe response object (DTO)
+        Map<String, Object> response = new HashMap<>();
+        response.put("pid", profile.getPid());
+        response.put("name", profile.getName());
+        response.put("email", profile.getMail());
+        // Add any other fields you want to return
+
+        return ResponseEntity.ok(response);
     } else {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
     }
 }
+
+
+
+@GetMapping("/receipe/{pid}")
+public Map<String, Object> getMyRecipes(@PathVariable int pid) {
+    return service1.getProfileWithRecipes(pid);
+}
+
 
 
 }
